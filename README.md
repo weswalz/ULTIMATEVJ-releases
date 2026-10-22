@@ -4,6 +4,6 @@ Official Ultimate VJ binary downloads. Application and RenderWave source are not
 
 Requirements: Apple Silicon Mac, macOS 26 or later. Compatibility and supported scope are documented per release.
 
-No installable release has been published yet. Downloads will appear under Releases after package verification.
+Verified binary downloads are published under Releases. Check each release for its supported scope and limitations.
 
 Homebrew tap: https://github.com/weswalz/homebrew-ultimatevj
