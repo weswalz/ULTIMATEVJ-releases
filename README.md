@@ -1,22 +1,25 @@
 <p align="center">
-  <img src="assets/uvj.png" width="200" alt="Ultimate VJ logo">
+  <img src="assets/ultimatevj.svg" width="112" height="112" alt="Ultimate VJ">
 </p>
 
-<h1 align="center">ULTIMATE VJ</h1>
-<p align="center"><strong>Free VJ software. Native macOS. Built for Apple Silicon.</strong></p>
-<p align="center">Trigger clips. Stack layers. Push pixels.</p>
+<h1 align="center">Ultimate VJ</h1>
+
+<p align="center"><strong>Live video mixing and generative visuals. Native macOS. Free.</strong></p>
+
 <p align="center">
-  <a href="https://github.com/weswalz/ULTIMATEVJ-releases/releases">Downloads</a> ·
-  <a href="https://github.com/weswalz/homebrew-ultimatevj">Homebrew tap</a>
+  <a href="#install">Install</a> ·
+  <a href="https://github.com/weswalz/ULTIMATEVJ-releases/releases">Downloads & release notes</a> ·
+  <a href="#technical-overview">Technical overview</a> ·
+  <a href="https://github.com/weswalz/ULTIMATEVJ-releases/issues">Report an issue</a>
 </p>
 
-Ultimate VJ is a live visual performance app: a clip grid, layered compositing, ordered effect stacks, and procedural visuals you can actually play. Load your footage, build a set, map your controls, and send the composition to a clean output window.
+Ultimate VJ is a visual performance application for Apple Silicon. It combines a bank-and-layer clip launcher, GPU compositing, ordered effect chains, editable text, and 28 built-in RenderWave generators in one console. Mix recorded footage with procedural sources, control the composition from MIDI or the keyboard, and send the result to a separate output display.
 
-Free to use. No account. No licence key.
+Developed and maintained by [Wes Walz](https://github.com/weswalz). Free to use, with no account or licence key required.
 
 ## Install
 
-**Apple Silicon · macOS 26 Tahoe or later · Homebrew**
+Requires **Apple Silicon** and **macOS 26 Tahoe or later**.
 
 ```sh
 brew update
@@ -24,43 +27,71 @@ brew tap weswalz/ultimatevj
 brew install --cask weswalz/ultimatevj/ultimatevj
 ```
 
-Prefer a ZIP? Open [Releases](https://github.com/weswalz/ULTIMATEVJ-releases/releases) and download the arm64 archive. Builds are Developer ID signed and Apple notarized. Each release includes a SHA-256 checksum.
+For a manual installation, download the arm64 ZIP from [Releases](https://github.com/weswalz/ULTIMATEVJ-releases/releases), extract it, and move `ULTIMATEVJ.app` into Applications. Public builds are Developer ID signed and Apple notarized; each release includes a SHA-256 checksum file.
 
-## What you can do
+**Public preview:** test your set on the machine and display you intend to use, and install updates between shows. See [Preview scope](#preview-scope) for the current boundaries.
 
-- **Play a set from a clip matrix.** Organize media into banks and layers, trigger clips, adjust transport, and mix with layer opacity and a crossfader.
-- **Build effect chains where they belong.** Clip, layer, group, and master scopes have ordered stacks. Transform a single source or process several layers together.
-- **Generate visuals without a video file.** The current preview ships 28 built-in RenderWave shaders, including ZERO DAY, MEGALASERS, Liquid Chrome V2, Hypercube Tesseract V2, and Neural Constellation. Change their controls and save the look with the clip.
-- **Put editable text in the composition.** Set the font, colour, alignment, and scale animation directly in a text clip.
-- **Use physical controls.** MIDI Note and CC mapping, keyboard shortcuts, and Ableton Link tempo/bar-phase sync. Link does not sync transport start/stop.
-- **Keep the controls off the output.** Run a clean fullscreen or windowed output while operating the console. Record the composition to silent video.
-- **Inspect failures.** Optional runtime debugging records renderer timing, errors, and recent history. Export a local Markdown report when something goes wrong.
+## Performance console
 
-## Under the hood
+| Area | Capabilities |
+| --- | --- |
+| Clip performance | Banks, layers, column triggering, cue points, playback speed, and clip transitions. |
+| Compositing | Layer blend modes, opacity, A/B crossfader assignment, and nested layer groups. |
+| Effects | 27 built-in effects, with ordered stacks at clip, layer, group, and master scope. Up to 16 effect instances per scope. |
+| Generative sources | 28 RenderWave generators with editable controls and saved clip settings. |
+| Text | Editable text clips with font, colour, alignment, and scale animation. |
+| Control and sync | Learned keyboard mappings, MIDI Note/CC mappings, and Ableton Link tempo and bar-phase sync. |
+| Output | Clean fullscreen or windowed output, selectable composition dimensions, and silent video recording. |
+| Sets and recovery | Saved `.uvj` sets, autosave, recovery copies, and set recovery across in-app updates. |
 
-The desktop UI uses **Swift, SwiftUI, and AppKit**. Rendering uses **Metal and Core Image**, with a compiled **RenderWave** runtime for procedural sources. Media decoding uses **FFmpeg**. Ableton Link handles tempo and bar phase.
+The effect collection includes feedback, trails, frame delay, freeze, displacement, wave warp, RGB split, luma key, cloning, and kaleidoscope processing. Effect order is explicit: each stage receives the result of the preceding stage.
 
-Shader look thumbnails include saved source controls, effects, transforms, and opacity. Their GPU work runs off the UI thread, and stale results are discarded.
+### RenderWave, built in
 
-This repository distributes the packaged application. Application and RenderWave source code are not hosted here.
+RenderWave sources generate frames on the GPU rather than playing a pre-rendered loop. Their controls and saved looks belong to the clip, so generated visuals can be arranged and processed alongside imported media.
+
+<table>
+  <tr>
+    <td width="33%"><img src="assets/renderwave-superclub-tunnel.png" alt="Blue geometric tunnel generated by RenderWave"></td>
+    <td width="33%"><img src="assets/renderwave-liquid-chrome.png" alt="Magenta and violet Liquid Chrome V2 surface generated by RenderWave"></td>
+    <td width="33%"><img src="assets/renderwave-fractal-mandala.png" alt="Green fractal mandala generated by RenderWave"></td>
+  </tr>
+  <tr>
+    <td align="center">Superclub Tunnel</td>
+    <td align="center">Liquid Chrome V2</td>
+    <td align="center">Fractal Mandala V2</td>
+  </tr>
+</table>
+
+<p align="center"><sub>Actual RenderWave output captured from the published 0.2.4 (13) application.</sub></p>
+
+## Technical overview
+
+The application is written in **Swift**, with **SwiftUI and AppKit** for the desktop interface. The rendering pipeline uses **Metal and Core Image**; procedural sources run through the compiled RenderWave runtime. Media decoding uses **AVFoundation and bundled FFmpeg**.
+
+Clip processing feeds layer processing, optional group stages, and then the master stage. Each effect scope has its own ordered stack. Off-air clip audition has an independent preview playhead; the performance output remains a separate view.
+
+**Ableton Link** synchronizes tempo and bar phase. MIDI input handles Note On, Note Off, and Control Change. Optional runtime debugging records renderer timing, errors, and recent history and exports a local Markdown report for diagnosis.
 
 ## Updates
 
-In a Homebrew-managed installation, open **Settings → Updates → Check for Updates**. **Update and Restart** downloads through Homebrew, saves the current set for recovery, quits, installs, verifies the installed version and signature, and reopens the app with the saved set.
-
-Or quit Ultimate VJ and run:
+For a Homebrew installation, quit Ultimate VJ and run:
 
 ```sh
 brew update
 brew upgrade --cask weswalz/ultimatevj/ultimatevj
 ```
 
-The [tap](https://github.com/weswalz/homebrew-ultimatevj/blob/main/Casks/ultimatevj.rb) specifies the version, archive URL, and checksum. The actual app download comes from this repository's release assets.
+The Homebrew-managed app also provides **Settings → Updates → Check for Updates** and **Update and Restart**. Checking and installation are separate actions. Installation saves a recovery set, waits for the app to quit, updates through Homebrew, verifies the installed version and Developer ID signature, and relaunches with the saved set. Recording must be stopped before installation.
 
-## Current status
+The [official tap](https://github.com/weswalz/homebrew-ultimatevj/blob/main/Casks/ultimatevj.rb) specifies the version, archive URL, and checksum. App archives are hosted in this repository's release assets.
 
-**Venue evaluation preview.** Full playback soak, production workload performance, and physical venue output qualification are still pending. Update between shows.
+## Preview scope
 
-There is no sustained frame-rate guarantee. Output is one selected physical display at a time. Syphon, NDI, and third-party FFGL/ISF plug-in hosting are not available. Recordings do not contain audio.
+The current build supports one selected physical output display at a time. Syphon, NDI, and third-party FFGL/ISF plug-in hosting are not implemented. Ableton Link does not synchronize transport start/stop. Video recordings contain no audio. Sustained frame rate depends on the workload and has not been qualified for production use.
 
-Read the notes attached to the build you install for its exact changes and limitations.
+This is the public binary distribution repository. Application and RenderWave source code are not published here.
+
+## Feedback
+
+[Open an issue](https://github.com/weswalz/ULTIMATEVJ-releases/issues/new) with the app version and build, Mac model, macOS version, steps to reproduce, and expected versus observed behaviour. For rendering problems, include the composition size and output configuration. A runtime report is useful; review it for private information before attaching it. Never attach venue media or credentials.
