@@ -15,6 +15,8 @@
 
 Ultimate VJ is a visual performance application for Apple Silicon. It combines a bank-and-layer clip launcher, GPU compositing, ordered effect chains, editable text, and 28 built-in RenderWave generators in one console. Mix recorded footage with procedural sources, control the composition from MIDI or the keyboard, and send the result to a separate output display.
 
+**Research Preview — installation and evaluation.** Full four-hour triggering soak, production workload performance, and physical venue-output acceptance remain pending. Test your intended machine and display setup, and install updates between shows. This repository distributes binaries and documentation; application and RenderWave source code are not published here.
+
 Developed and maintained by [Wes Walz](https://github.com/weswalz). Free to use, with no account or licence key required.
 
 ## Install
