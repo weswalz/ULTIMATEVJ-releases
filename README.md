@@ -13,9 +13,9 @@
   <a href="https://github.com/weswalz/ULTIMATEVJ-releases/issues">Report an issue</a>
 </p>
 
-Ultimate VJ is a visual performance application for Apple Silicon. It combines a bank-and-layer clip launcher, GPU compositing, ordered effect chains, editable text, and 28 built-in RenderWave generators in one console. Mix recorded footage with procedural sources, control the composition from MIDI or the keyboard, and send the result to a separate output display.
+Ultimate VJ is a visual performance application for Apple Silicon. It combines a bank-and-layer clip launcher, GPU compositing, ordered effect chains, editable text, and a canonical free catalog of 28 RenderWave generators in one console. Available shaders depend on the catalog supplied with your build. Mix recorded footage with procedural sources, control the composition from MIDI or the keyboard, and send the result to a separate output display.
 
-**Research Preview — installation and evaluation.** Full four-hour triggering soak, production workload performance, and physical venue-output acceptance remain pending. Test your intended machine and display setup, and install updates between shows. This repository distributes binaries and documentation; application and RenderWave source code are not published here.
+**Alpha — installation and evaluation.** Full four-hour triggering soak, production workload performance, and physical venue-output acceptance remain pending. Test your intended machine and display setup, and install updates between shows. This repository distributes binaries and documentation; application and RenderWave source code are not published here.
 
 Developed and maintained by [Wes Walz](https://github.com/weswalz). Free to use, with no account or licence key required.
 
@@ -31,7 +31,7 @@ brew install --cask weswalz/ultimatevj/ultimatevj
 
 For a manual installation, download the arm64 ZIP from [Releases](https://github.com/weswalz/ULTIMATEVJ-releases/releases), extract it, and move `ULTIMATEVJ.app` into Applications. Public builds are Developer ID signed and Apple notarized; each release includes a SHA-256 checksum file.
 
-**Public preview:** test your set on the machine and display you intend to use, and install updates between shows. See [Preview scope](#preview-scope) for the current boundaries.
+**Alpha:** test your set on the machine and display you intend to use, and install updates between shows. See [Alpha scope](#alpha-scope) for the current boundaries.
 
 ## Performance console
 
@@ -40,7 +40,7 @@ For a manual installation, download the arm64 ZIP from [Releases](https://github
 | Clip performance | Banks, layers, column triggering, cue points, playback speed, and clip transitions. |
 | Compositing | Layer blend modes, opacity, A/B crossfader assignment, and nested layer groups. |
 | Effects | 27 built-in effects, with ordered stacks at clip, layer, group, and master scope. Up to 16 effect instances per scope. |
-| Generative sources | 28 RenderWave generators with editable controls and saved clip settings. |
+| Generative sources | Canonical free catalog of 28 RenderWave generators with editable controls and saved clip settings; availability depends on the supplied build catalog. |
 | Text | Editable text clips with font, colour, alignment, and scale animation. |
 | Control and sync | Learned keyboard mappings, MIDI Note/CC mappings, and Ableton Link tempo and bar-phase sync. |
 | Output | Clean fullscreen or windowed output, selectable composition dimensions, and silent video recording. |
@@ -102,9 +102,9 @@ The Homebrew-managed app also provides **Settings → Updates → Check for Upda
 
 The [official tap](https://github.com/weswalz/homebrew-ultimatevj/blob/main/Casks/ultimatevj.rb) specifies the version, archive URL, and checksum. App archives are hosted in this repository's release assets.
 
-## Preview scope
+## Alpha scope
 
-The current build supports one selected physical output display at a time. Syphon, NDI, and third-party FFGL/ISF plug-in hosting are not implemented. Ableton Link does not synchronize transport start/stop. Video recordings contain no audio. Sustained frame rate depends on the workload and has not been qualified for production use.
+The current build supports one selected physical output display at a time. Experimental Syphon input and output exist in development source; availability and qualification in the downloaded package remain unverified. NDI and third-party FFGL/ISF plug-in hosting are not implemented. Ableton Link does not synchronize transport start/stop. Video recordings contain no audio. Sustained frame rate depends on the workload and has not been qualified for production use.
 
 This is the public binary distribution repository. Application and RenderWave source code are not published here.
 
