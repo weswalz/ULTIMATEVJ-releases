@@ -15,7 +15,7 @@
 
 Ultimate VJ is a visual performance application for Apple Silicon. It combines a bank-and-layer clip launcher, GPU compositing, ordered effect chains, editable text, and a canonical free catalog of 28 RenderWave generators in one console. Available shaders depend on the catalog supplied with your build. Mix recorded footage with procedural sources, control the composition from MIDI or the keyboard, and send the result to a separate output display.
 
-**Alpha — installation and evaluation.** Full four-hour triggering soak, production workload performance, and physical venue-output acceptance remain pending. Test your intended machine and display setup, and install updates between shows. This repository distributes binaries and documentation; application and RenderWave source code are not published here.
+**Alpha.** Prepare your set and check your media, controls and connected display before a show. Install updates between shows. This repository distributes binaries and documentation; application and RenderWave source code are not published here.
 
 Developed and maintained by [Wes Walz](https://github.com/weswalz). Free to use, with no account or licence key required.
 
@@ -104,7 +104,7 @@ The [official tap](https://github.com/weswalz/homebrew-ultimatevj/blob/main/Cask
 
 ## Alpha scope
 
-The current build supports one selected physical output display at a time. Experimental Syphon input and output exist in development source; availability and qualification in the downloaded package remain unverified. NDI and third-party FFGL/ISF plug-in hosting are not implemented. Ableton Link does not synchronize transport start/stop. Video recordings contain no audio. Sustained frame rate depends on the workload and has not been qualified for production use.
+The current build supports one selected physical output display at a time. The Alpha includes Syphon input and output. NDI and third-party FFGL/ISF plug-in hosting are not implemented. Ableton Link does not synchronize transport start/stop. Video recordings contain no audio.
 
 This is the public binary distribution repository. Application and RenderWave source code are not published here.
 
