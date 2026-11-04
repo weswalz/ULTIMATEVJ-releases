@@ -19,6 +19,8 @@ Ultimate VJ is a visual performance application for Apple Silicon. It combines a
 
 Developed and maintained by [Wes Walz](https://github.com/weswalz). Free to use, with no account or licence key required.
 
+Current release: **[0.4.7](https://github.com/weswalz/ULTIMATEVJ-releases/releases/tag/v0.4.7)** · [Download for Mac](https://ultimatevj.com/download/mac/0.4.7).
+
 ## Install
 
 Requires **Apple Silicon** and **macOS 26 Tahoe or later**.
