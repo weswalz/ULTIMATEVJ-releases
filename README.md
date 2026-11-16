@@ -15,11 +15,11 @@
 
 Ultimate VJ is a visual performance application for Apple Silicon. It combines a bank-and-layer clip launcher, GPU compositing, ordered effect chains, editable text, and a canonical free catalog of 28 RenderWave generators in one console. Available shaders depend on the catalog supplied with your build. Mix recorded footage with procedural sources, control the composition from MIDI or the keyboard, and send the result to a separate output display.
 
-**Alpha.** Prepare your set and check your media, controls and connected display before a show. Install updates between shows. This repository distributes binaries and documentation; application and RenderWave source code are not published here.
+**0.6.0 Beta 2.** Prepare your set and check your media, controls and connected display before a show. Install updates between shows. This repository distributes binaries and documentation; application and RenderWave source code are not published here.
 
 Developed and maintained by [Wes Walz](https://github.com/weswalz). Free to use, with no account or licence key required.
 
-Current release: **[0.4.7](https://github.com/weswalz/ULTIMATEVJ-releases/releases/tag/v0.4.7)** · [Download for Mac](https://ultimatevj.com/download/mac/0.4.7).
+Current release: **[0.6.0 Beta 2](https://github.com/weswalz/ULTIMATEVJ-releases/releases/tag/v0.6.0)** · [Download for Mac](https://ultimatevj.com/download/mac/0.6.0).
 
 ## Install
 
@@ -33,7 +33,7 @@ brew install --cask weswalz/ultimatevj/ultimatevj
 
 For a manual installation, download the arm64 ZIP from [Releases](https://github.com/weswalz/ULTIMATEVJ-releases/releases), extract it, and move `ULTIMATEVJ.app` into Applications. Public builds are Developer ID signed and Apple notarized; each release includes a SHA-256 checksum file.
 
-**Alpha:** test your set on the machine and display you intend to use, and install updates between shows. See [Alpha scope](#alpha-scope) for the current boundaries.
+**0.6.0 Beta 2:** test your set on the machine and display you intend to use, and install updates between shows. See [Release scope](#release-scope) for the current boundaries.
 
 ## Performance console
 
@@ -104,9 +104,9 @@ The Homebrew-managed app also provides **Settings → Updates → Check for Upda
 
 The [official tap](https://github.com/weswalz/homebrew-ultimatevj/blob/main/Casks/ultimatevj.rb) specifies the version, archive URL, and checksum. App archives are hosted in this repository's release assets.
 
-## Alpha scope
+## Release scope
 
-The current build supports one selected physical output display at a time. The Alpha includes Syphon input and output. NDI and third-party FFGL/ISF plug-in hosting are not implemented. Ableton Link does not synchronize transport start/stop. Video recordings contain no audio.
+0.6.0 Beta 2 supports multiple independently mapped display outputs, NDI input and output, and Syphon input and output. Third-party FFGL/ISF plug-in hosting is not implemented. Ableton Link does not synchronize transport start/stop. Video recordings contain no audio.
 
 This is the public binary distribution repository. Application and RenderWave source code are not published here.
 
